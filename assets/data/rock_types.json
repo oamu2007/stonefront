@@ -1,0 +1,60 @@
+{
+  "_comment": "Placeholder rock type definitions. Fixed/fluctuating values and stat weights are unbalanced dummy numbers — tune during Milestone 2.",
+  "rock_types": [
+    {
+      "id": "opal",
+      "display_name": "Opal",
+      "fixed_value": 50,
+      "fluctuating_range": [40, 60],
+      "stats": {
+        "purity_weight": 1.0,
+        "brightness_weight": 1.5,
+        "shape_weight": 0.5
+      }
+    },
+    {
+      "id": "gold",
+      "display_name": "Gold",
+      "fixed_value": 120,
+      "fluctuating_range": [100, 140],
+      "stats": {
+        "purity_weight": 2.0,
+        "brightness_weight": 1.0,
+        "shape_weight": 0.25
+      }
+    },
+    {
+      "id": "ruby",
+      "display_name": "Ruby",
+      "fixed_value": 90,
+      "fluctuating_range": [70, 110],
+      "stats": {
+        "purity_weight": 1.5,
+        "brightness_weight": 1.5,
+        "shape_weight": 1.0
+      }
+    },
+    {
+      "id": "topaz",
+      "display_name": "Topaz",
+      "fixed_value": 45,
+      "fluctuating_range": [35, 55],
+      "stats": {
+        "purity_weight": 1.0,
+        "brightness_weight": 1.0,
+        "shape_weight": 0.5
+      }
+    },
+    {
+      "id": "diamond",
+      "display_name": "Diamond",
+      "fixed_value": 200,
+      "fluctuating_range": [160, 240],
+      "stats": {
+        "purity_weight": 2.5,
+        "brightness_weight": 2.0,
+        "shape_weight": 1.0
+      }
+    }
+  ]
+}
