@@ -9,6 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Dependencies
 # ---------------------------------------------------------------------------
 include(FetchContent)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
 # SFML 3 — pulled via FetchContent so the repo doesn't require a system-wide
 # SFML install. First configure will take a while; subsequent ones are cached.
@@ -21,13 +22,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(SFML)
 
 # nlohmann/json — header-only, used for rock/customer/event data files.
-FetchContent_Declare(
-    json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG        v3.11.3
-    GIT_SHALLOW    ON
-)
-FetchContent_MakeAvailable(json)
+# made comment for now, will not use data .jsons for now
+# FetchContent_Declare(
+#    json
+#    GIT_REPOSITORY https://github.com/nlohmann/json.git
+#    GIT_TAG        v3.11.3
+#    GIT_SHALLOW    ON
+# )
+# FetchContent_MakeAvailable(json)
 
 # ---------------------------------------------------------------------------
 # Main executable
@@ -43,7 +45,7 @@ target_link_libraries(Stonefront PRIVATE
     SFML::Window
     SFML::System
     SFML::Audio
-    nlohmann_json::nlohmann_json
+    # nlohmann_json::nlohmann_json
 )
 
 # Copy assets next to the built binary so relative paths ("assets/...") work

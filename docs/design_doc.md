@@ -1,12 +1,12 @@
-# Name Pending — Game Design Document
+# Stonefront — Game Design Document
 
-*A working design doc. Status: early planning, no code written yet.*
+*A working design doc.*
 
 ## 0. Project Context
 
-- Developer is in 3rd semester of Computer Science — building this slowly and incrementally.
+- Solo dev
 - Tech stack: C++ in VS Code, version controlled with GitHub.
-- Graphics: SFML (developer has prior experience, but unsure if SFML will be sufficient for the full scope of this game — flag for later evaluation).
+- Graphics: SFML (prior experience, but unsure if SFML will be sufficient for the full scope of this game - flag for later evaluation).
 - Inspirations:
   - **EA FC Career Mode** — negotiation system (contract/transfer negotiation mechanic as the model for haggling with customers).
   - **Minecraft Hypixel Skyblock** — Auction House and Dark Auctions (as the model for the Online Auction and Underground Auction systems).
@@ -40,7 +40,7 @@ Each rock type (opal, gold, ruby, topaz, diamond, etc.) has:
   - **News Events** can heavily swing this value on a given day (e.g., "Celebrity X says diamonds are trash!"). News is read voluntarily from a stand in your shop (see Section 7 — Newspaper Membership).
 
 ### 3.2 Stat Score
-Each individual rock also has its own stats — candidates include **purity, sharpness, brightness, shape**, etc. (exact stat list and weighting still TBD). These stats sum together and adjust the rock's value up or down from the baseline set by its type.
+Each individual rock also has its own stats — candidates include **purity, sharpness, brightness, shape**, etc. (exact stat list and weighting still TBD, but will be constant across all rocks). These stats sum together and adjust the rock's value up or down from the baseline set by its type.
 
 **Open questions:**
 - How many stats total, and how each is weighted.
@@ -98,13 +98,13 @@ Starts empty at the beginning of the game. Tracks your shop's reputation and gat
 
 ## 7. Your Shop
 
-The shop is your home base and can house the following, most of which are purchased from Specials or the Underground Auction:
+The shop is your home base and can house the following, most of which are purchased from Specials or the Underground Auction and can be upgraded at a cost:
 
 | Feature | Starting State | Upgradeable? | Notes |
 |---|---|---|---|
 | Counter | Available from start | — | Where you attend customers |
 | Rock Storage Chest | Small, starting default | Yes | Total inventory cap; can't receive rocks once full |
-| Rock Scanner | Not owned at start | Yes (costs money) | Gives an estimated value for a chosen rock (yours or a customer's); accuracy and daily use count scale with upgrade level |
+| Rock Scanner | Not owned at start | Yes | Gives an estimated value for a chosen rock (yours or a customer's); accuracy and daily use count scale with upgrade level |
 | Computer (Online Auction access) | Not owned at start | No upgrades, one-time unlock cost | Required to access the Online Auction after closing shop |
 | Newspaper Membership | Not owned at start | Yes, one upgrade tier | Base tier reports yesterday's value-affecting news events; upgrades to a tablet that reports today's events |
 
@@ -119,7 +119,7 @@ Accessed once you close shop, using leftover daily time. Has three pages:
 - Instant purchase; rock is delivered the next morning.
 
 ### 8.2 Sell-It-Now (SIN)
-- Same interface as BIN, but for listing your own rocks at any price you choose.
+- Same logic as BIN, but for listing your own rocks at any price you choose.
 - Lower prices (relative to true value) sell faster.
 - Unsold rocks are returned to you when the listing period ends.
 
@@ -166,7 +166,7 @@ This is a solid fit for the project, not just a "good enough for now" compromise
 - Pixel art is cheap to produce well at small scale, which matters for a solo dev balancing this alongside coursework. It also scales great on low-end hardware, since small textures are being pushed instead of high-res assets — this lines up directly with the low-end-PC goal.
 - Render load for this kind of game (a handful of UI panels, some sprites, light particle effects) is trivial for even weak hardware. The real performance bottleneck will be game logic (rock valuation calculations, auction simulation, customer AI) — not rendering — and C++ handles that fine regardless of graphics backend.
 - Prior SFML experience reduces risk more than switching backend would reduce it. For a project this ambitious in scope, picking up a new engine (Godot, Unity, etc.) at the same time would add risk, not reduce it.
-- "Charm" comes from art direction and juice (small animations, sound feedback on a good negotiation, UI flourish) — not rendering horsepower. SFML doesn't hold that back. Pixel-art + SFML is basically the canonical low-end indie shop/sim stack (Stardew-Valley-adjacent).
+- "Charm" comes from art direction and juice (small animations, sound feedback on a good negotiation, UI flourish) — not rendering horsepower. SFML doesn't hold that back. Pixel-art + SFML is basically the canonical low-end indie shop/sim stack.
 
 **Trade-offs to plan for:**
 
